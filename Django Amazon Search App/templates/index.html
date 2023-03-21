@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Search Amazon</title>
+</head>
+<body>
+    <h1>Search Amazon</h1>
+    <form method="get">
+        <input type="text" name="keyword" placeholder="Enter a keyword">
+        <button type="submit">Search</button>
+    </form>
+    {% if keyword %}
+        <h2>Results for "{{ keyword }}"</h2>
+        {% if products %}
+            <ul>
+                {% for product in products %}
+                    <li><a href="{{ product.url }}">{{ product.title }}</a> - {{ product.price }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
